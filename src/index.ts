@@ -3,9 +3,9 @@ import {McpServer} from "@modelcontextprotocol/sdk/server/mcp.js";
 import {z} from "zod";
 
 // Define our MCP agent with tools
-export class MyMCP extends McpAgent {
+export class PokefinderMCP extends McpAgent {
   server = new McpServer({
-    name: "Authless Calculator",
+    name: "Pokefinder",
     version: "1.0.0",
   });
 
@@ -59,11 +59,11 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
-      return MyMCP.serveSSE("/sse").fetch(request, env, ctx);
+      return PokefinderMCP.serveSSE("/sse").fetch(request, env, ctx);
     }
 
     if (url.pathname === "/mcp") {
-      return MyMCP.serve("/mcp").fetch(request, env, ctx);
+      return PokefinderMCP.serve("/mcp").fetch(request, env, ctx);
     }
 
     return new Response("Not found", {status: 404});
