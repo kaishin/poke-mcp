@@ -18,14 +18,6 @@
       "tag": "v1"
     }
   ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "PokefinderMCP",
-        "name": "MCP_OBJECT"
-      }
-    ]
-  },
   "observability": {
     "enabled": true
   }
