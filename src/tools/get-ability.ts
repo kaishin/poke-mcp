@@ -11,7 +11,11 @@ export function registerGetAbilityTool(server: McpServer) {
     async ({ability}) => {
       try {
         const pokedex = new Pokedex();
-        const abilityData = await pokedex.getAbilityByName(ability);
+        const abilityData = await pokedex.getAbilityByName(
+          ability.toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+        );
         return {
           content: [
             {

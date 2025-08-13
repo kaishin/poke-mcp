@@ -11,7 +11,11 @@ export function registerGetSpeciesTool(server: McpServer) {
     async ({species}) => {
       try {
         const pokedex = new Pokedex();
-        const speciesData = await pokedex.getPokemonSpeciesByName(species);
+        const speciesData = await pokedex.getPokemonSpeciesByName(
+          species.toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+        );
         return {
           content: [{
             type: "text",
